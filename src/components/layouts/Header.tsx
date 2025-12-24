@@ -25,14 +25,14 @@ export function Header() {
         <div className="flex items-center gap-6">
           <Link to="/" className="flex items-center gap-2">
             <FileText className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold gradient-text">ChinaResearchHub</span>
+            <span className="text-xl font-bold gradient-text">China Insights</span>
           </Link>
           <nav className="hidden md:flex items-center gap-6">
             <Link to="/" className="text-sm font-medium transition-colors hover:text-primary">
-              首页
+              Home
             </Link>
             <Link to="/reports" className="text-sm font-medium transition-colors hover:text-primary">
-              研报列表
+              Research Reports
             </Link>
           </nav>
         </div>
@@ -44,7 +44,7 @@ export function Header() {
                 <Button variant="outline" asChild>
                   <Link to="/admin">
                     <Settings className="mr-2 h-4 w-4" />
-                    管理后台
+                    Admin Panel
                   </Link>
                 </Button>
               )}
@@ -59,27 +59,27 @@ export function Header() {
                   <div className="px-2 py-1.5 text-sm">
                     <p className="font-medium">{profile.username}</p>
                     <p className="text-xs text-muted-foreground">
-                      {profile.role === 'admin' ? '管理员' : '普通用户'}
+                      {profile.role === 'admin' ? 'Administrator' : 'User'}
                     </p>
                   </div>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
                     <Link to="/profile">
                       <User className="mr-2 h-4 w-4" />
-                      个人中心
+                      Profile
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleSignOut}>
                     <LogOut className="mr-2 h-4 w-4" />
-                    退出登录
+                    Logout
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </>
           ) : (
             <Button asChild>
-              <Link to="/login">登录</Link>
+              <Link to="/login">Login</Link>
             </Button>
           )}
         </div>

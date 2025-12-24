@@ -26,25 +26,25 @@ export default function AdminDashboard() {
 
   const statCards = [
     {
-      title: '研报总数',
+      title: 'Total Reports',
       value: stats?.totalReports || 0,
       icon: FileText,
       color: 'text-blue-600',
     },
     {
-      title: '总下载量',
+      title: 'Total Downloads',
       value: stats?.totalDownloads || 0,
       icon: Download,
       color: 'text-green-600',
     },
     {
-      title: '用户总数',
+      title: 'Total Users',
       value: stats?.totalUsers || 0,
       icon: Users,
       color: 'text-purple-600',
     },
     {
-      title: '总浏览量',
+      title: 'Total Views',
       value: stats?.totalViews || 0,
       icon: Eye,
       color: 'text-orange-600',
@@ -89,11 +89,11 @@ export default function AdminDashboard() {
 
       <Card className="mt-8">
         <CardHeader>
-          <CardTitle>欢迎使用管理后台</CardTitle>
+          <CardTitle>Welcome to Admin Panel</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground">
-            这里是 ChinaResearchHub 的管理后台。您可以在这里管理研报、分类、用户等内容。
+            This is the China Insights admin panel. You can manage reports, categories, users and more here.
           </p>
         </CardContent>
       </Card>

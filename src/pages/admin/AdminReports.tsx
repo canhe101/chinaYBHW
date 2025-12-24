@@ -86,8 +86,8 @@ export default function AdminReports() {
         published_at: formData.published_at || undefined,
       });
       toast({
-        title: '创建成功',
-        description: '研报已创建',
+        title: 'CreateSuccessfully',
+        description: '研报已Create',
       });
       setDialogOpen(false);
       resetForm();
@@ -95,7 +95,7 @@ export default function AdminReports() {
     } catch (error) {
       console.error('Failed to create report:', error);
       toast({
-        title: '创建失败',
+        title: 'CreateFailed',
         description: '请稍后重试',
         variant: 'destructive',
       });
@@ -112,8 +112,8 @@ export default function AdminReports() {
         published_at: formData.published_at || null,
       });
       toast({
-        title: '更新成功',
-        description: '研报已更新',
+        title: 'UpdateSuccessfully',
+        description: '研报已Update',
       });
       setDialogOpen(false);
       setEditingReport(null);
@@ -122,7 +122,7 @@ export default function AdminReports() {
     } catch (error) {
       console.error('Failed to update report:', error);
       toast({
-        title: '更新失败',
+        title: 'UpdateFailed',
         description: '请稍后重试',
         variant: 'destructive',
       });
@@ -135,15 +135,15 @@ export default function AdminReports() {
     try {
       await deleteReport(deletingReport.id);
       toast({
-        title: '删除成功',
-        description: '研报已删除',
+        title: 'DeleteSuccessfully',
+        description: '研报已Delete',
       });
       setDeletingReport(null);
       fetchData();
     } catch (error) {
       console.error('Failed to delete report:', error);
       toast({
-        title: '删除失败',
+        title: 'DeleteFailed',
         description: '请稍后重试',
         variant: 'destructive',
       });
@@ -156,15 +156,15 @@ export default function AdminReports() {
     try {
       await deleteReportsBatch(Array.from(selectedReports));
       toast({
-        title: '批量删除成功',
-        description: `已删除 ${selectedReports.size} 个研报`,
+        title: '批量DeleteSuccessfully',
+        description: `已Delete ${selectedReports.size} 个研报`,
       });
       setSelectedReports(new Set());
       fetchData();
     } catch (error) {
       console.error('Failed to batch delete:', error);
       toast({
-        title: '批量删除失败',
+        title: '批量DeleteFailed',
         description: '请稍后重试',
         variant: 'destructive',
       });
@@ -182,18 +182,18 @@ export default function AdminReports() {
       const jsonData = XLSX.utils.sheet_to_json(worksheet) as any[];
 
       const reportsToImport = jsonData.map((row) => ({
-        title: row['标题'] || row['title'] || '',
-        description: row['简介'] || row['description'] || '',
-        pdf_url: row['下载链接'] || row['pdf_url'] || '',
-        source: row['来源'] || row['source'] || '',
-        published_at: row['发布时间'] || row['published_at'] || '',
+        title: row['Title'] || row['title'] || '',
+        description: row['Description'] || row['description'] || '',
+        pdf_url: row['Download URL'] || row['pdf_url'] || '',
+        source: row['Source'] || row['source'] || '',
+        published_at: row['Published Date'] || row['published_at'] || '',
         category_id: undefined,
       })).filter(r => r.title && r.pdf_url);
 
       if (reportsToImport.length === 0) {
         toast({
-          title: '导入失败',
-          description: 'Excel文件中没有有效数据',
+          title: '导入Failed',
+          description: 'No valid data in Excel file',
           variant: 'destructive',
         });
         return;
@@ -201,16 +201,16 @@ export default function AdminReports() {
 
       await createReportsBatch(reportsToImport);
       toast({
-        title: '导入成功',
-        description: `已导入 ${reportsToImport.length} 个研报`,
+        title: '导入Successfully',
+        description: `Imported ${reportsToImport.length} 个研报`,
       });
       setImportDialogOpen(false);
       fetchData();
     } catch (error) {
       console.error('Failed to import Excel:', error);
       toast({
-        title: '导入失败',
-        description: '请检查Excel文件格式',
+        title: '导入Failed',
+        description: 'Please check Excel file format',
         variant: 'destructive',
       });
     }
@@ -220,12 +220,12 @@ export default function AdminReports() {
 
   const downloadTemplate = () => {
     const template = [
-      { 标题: '示例研报标题', 简介: '研报简介描述', 下载链接: 'https://example.com/report.pdf', 来源: '研究机构', 发布时间: '2025-01-01' }
+      { Title: 'Sample Report Title', Description: 'Report description', 'Download URL': 'https://example.com/report.pdf', Source: 'Research Institution', 'Published Date': '2025-01-01' }
     ];
     const ws = XLSX.utils.json_to_sheet(template);
     const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, '研报模板');
-    XLSX.writeFile(wb, '研报导入模板.xlsx');
+    XLSX.utils.book_append_sheet(wb, ws, 'Reports Template');
+    XLSX.writeFile(wb, 'reports_import_template.xlsx');
   };
 
   const resetForm = () => {
@@ -284,24 +284,24 @@ export default function AdminReports() {
           {selectedReports.size > 0 && (
             <Button variant="destructive" onClick={handleBatchDelete}>
               <Trash2 className="mr-2 h-4 w-4" />
-              批量删除 ({selectedReports.size})
+              批量Delete ({selectedReports.size})
             </Button>
           )}
           <Button variant="outline" onClick={() => setImportDialogOpen(true)}>
             <Upload className="mr-2 h-4 w-4" />
-            Excel导入
+            Excel Import
           </Button>
           <Button onClick={openCreateDialog}>
             <Plus className="mr-2 h-4 w-4" />
-            新增研报
+            Add研报
           </Button>
         </div>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>研报列表</CardTitle>
-          <CardDescription>管理所有研报</CardDescription>
+          <CardTitle>Reports List</CardTitle>
+          <CardDescription>Manage all reports</CardDescription>
         </CardHeader>
         <CardContent>
           {loading ? (
@@ -316,12 +316,12 @@ export default function AdminReports() {
                       onCheckedChange={toggleAllReports}
                     />
                   </TableHead>
-                  <TableHead>标题</TableHead>
-                  <TableHead>分类</TableHead>
-                  <TableHead>浏览量</TableHead>
-                  <TableHead>下载量</TableHead>
-                  <TableHead>创建时间</TableHead>
-                  <TableHead className="text-right">操作</TableHead>
+                  <TableHead>Title</TableHead>
+                  <TableHead>Category</TableHead>
+                  <TableHead>Views</TableHead>
+                  <TableHead>Downloads</TableHead>
+                  <TableHead>Create时间</TableHead>
+                  <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -370,19 +370,19 @@ export default function AdminReports() {
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle>{editingReport ? '编辑研报' : '新增研报'}</DialogTitle>
+            <DialogTitle>{editingReport ? 'Edit研报' : 'Add研报'}</DialogTitle>
             <DialogDescription>
-              {editingReport ? '修改研报信息' : '创建一个新的研报'}
+              {editingReport ? 'Modify report information' : 'Create一个新的研报'}
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4 py-4">
             <div className="space-y-2">
-              <Label htmlFor="title">标题 *</Label>
+              <Label htmlFor="title">Title *</Label>
               <Input
                 id="title"
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                placeholder="输入研报标题"
+                placeholder="输入研报Title"
               />
             </div>
             <div className="space-y-2">
@@ -391,18 +391,18 @@ export default function AdminReports() {
                 id="description"
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                placeholder="输入研报描述"
+                placeholder="Enter report description"
                 rows={3}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="category">分类</Label>
+              <Label htmlFor="category">Category</Label>
               <Select value={formData.category_id || 'none'} onValueChange={(value) => setFormData({ ...formData, category_id: value === 'none' ? '' : value })}>
                 <SelectTrigger>
-                  <SelectValue placeholder="选择分类" />
+                  <SelectValue placeholder="选择Category" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="none">无分类</SelectItem>
+                  <SelectItem value="none">无Category</SelectItem>
                   {categories.map((cat) => (
                     <SelectItem key={cat.id} value={cat.id}>
                       {cat.name}
@@ -412,7 +412,7 @@ export default function AdminReports() {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="pdf_url">PDF下载链接 *</Label>
+              <Label htmlFor="pdf_url">PDF Download URL *</Label>
               <Input
                 id="pdf_url"
                 value={formData.pdf_url}
@@ -421,16 +421,16 @@ export default function AdminReports() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="source">来源</Label>
+              <Label htmlFor="source">Source</Label>
               <Input
                 id="source"
                 value={formData.source}
                 onChange={(e) => setFormData({ ...formData, source: e.target.value })}
-                placeholder="研究机构名称"
+                placeholder="Research institution name"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="published_at">发布时间</Label>
+              <Label htmlFor="published_at">Published Date</Label>
               <Input
                 id="published_at"
                 type="date"
@@ -441,10 +441,10 @@ export default function AdminReports() {
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setDialogOpen(false)}>
-              取消
+              Cancel
             </Button>
             <Button onClick={editingReport ? handleUpdate : handleCreate}>
-              {editingReport ? '更新' : '创建'}
+              {editingReport ? 'Update' : 'Create'}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -454,24 +454,24 @@ export default function AdminReports() {
       <Dialog open={importDialogOpen} onOpenChange={setImportDialogOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Excel批量导入</DialogTitle>
+            <DialogTitle>Excel Batch Import</DialogTitle>
             <DialogDescription>
-              上传Excel文件批量导入研报
+              Upload Excel file to batch import reports
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4 py-4">
             <div className="space-y-2">
-              <Label>Excel文件格式要求</Label>
+              <Label>Excel file format requirements</Label>
               <p className="text-sm text-muted-foreground">
-                Excel文件应包含以下列：标题、简介、下载链接、来源、发布时间
+                Excel file should contain the following columns: Title, Description, Download URL, Source, Published Date
               </p>
               <Button variant="outline" size="sm" onClick={downloadTemplate}>
                 <Download className="mr-2 h-4 w-4" />
-                下载模板
+                Download Template
               </Button>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="excel-file">选择Excel文件</Label>
+              <Label htmlFor="excel-file">Select Excel file</Label>
               <Input
                 id="excel-file"
                 type="file"
@@ -487,14 +487,14 @@ export default function AdminReports() {
       <AlertDialog open={!!deletingReport} onOpenChange={() => setDeletingReport(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>确认删除</AlertDialogTitle>
+            <AlertDialogTitle>确认Delete</AlertDialogTitle>
             <AlertDialogDescription>
-              确定要删除研报 "{deletingReport?.title}" 吗？此操作无法撤销。
+              确定要Delete研报 "{deletingReport?.title}" 吗？This action cannot be undone。
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>取消</AlertDialogCancel>
-            <AlertDialogAction onClick={handleDelete}>删除</AlertDialogAction>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={handleDelete}>Delete</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

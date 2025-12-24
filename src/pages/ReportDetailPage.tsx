@@ -34,8 +34,8 @@ export default function ReportDetailPage() {
           await incrementViewCount(id);
         } else {
           toast({
-            title: '错误',
-            description: '研报不存在',
+            title: 'Error',
+            description: 'Report not found',
             variant: 'destructive',
           });
           navigate('/reports');
@@ -43,8 +43,8 @@ export default function ReportDetailPage() {
       } catch (error) {
         console.error('Failed to fetch report:', error);
         toast({
-          title: '错误',
-          description: '加载研报失败',
+          title: 'Error',
+          description: 'Failed to load report',
           variant: 'destructive',
         });
       } finally {
@@ -69,8 +69,8 @@ export default function ReportDetailPage() {
       window.open(report.pdf_url, '_blank');
       
       toast({
-        title: '下载成功',
-        description: '研报已在新窗口打开',
+        title: 'Download Successful',
+        description: '研报已Open in New Window',
       });
       
       // 更新本地下载计数
@@ -78,8 +78,8 @@ export default function ReportDetailPage() {
     } catch (error) {
       console.error('Failed to download:', error);
       toast({
-        title: '下载失败',
-        description: '请稍后重试',
+        title: 'Download Failed',
+        description: 'Please try again later',
         variant: 'destructive',
       });
     }
@@ -114,7 +114,7 @@ export default function ReportDetailPage() {
         <Button variant="ghost" className="mb-8" asChild>
           <Link to="/reports">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            返回列表
+            Back to List
           </Link>
         </Button>
 
@@ -165,7 +165,7 @@ export default function ReportDetailPage() {
                 <div className="flex items-center gap-2 text-sm">
                   <FileText className="h-4 w-4 text-muted-foreground" />
                   <div>
-                    <p className="text-muted-foreground">来源</p>
+                    <p className="text-muted-foreground">Source</p>
                     <p className="font-medium">{report.source}</p>
                   </div>
                 </div>
@@ -176,12 +176,12 @@ export default function ReportDetailPage() {
 
             {/* PDF Preview */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">PDF预览</h3>
+              <h3 className="text-lg font-semibold mb-4">PDF Preview</h3>
               <div className="aspect-[3/4] w-full border rounded-lg overflow-hidden bg-muted">
                 <iframe
                   src={`${report.pdf_url}#toolbar=0`}
                   className="w-full h-full"
-                  title="PDF预览"
+                  title="PDF Preview"
                 />
               </div>
             </div>
@@ -192,12 +192,12 @@ export default function ReportDetailPage() {
             <div className="flex flex-col xl:flex-row gap-4">
               <Button size="lg" className="flex-1" onClick={handleDownload}>
                 <Download className="mr-2 h-4 w-4" />
-                下载研报
+                Download Report
               </Button>
               <Button size="lg" variant="outline" className="flex-1" asChild>
                 <a href={report.pdf_url} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="mr-2 h-4 w-4" />
-                  在新窗口打开
+                  Open in New Window
                 </a>
               </Button>
             </div>

@@ -59,7 +59,7 @@ export default function AdminStatistics() {
     <div>
       <div className="mb-8">
         <h1 className="text-3xl font-bold">统计分析</h1>
-        <p className="text-muted-foreground mt-2">平台数据统计概览</p>
+        <p className="text-muted-foreground mt-2">Platform data statistics overview</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
@@ -101,13 +101,13 @@ export default function AdminStatistics() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <TrendingUp className="h-5 w-5" />
-              平台增长
+              Platform Growth
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">平均每个研报浏览量</span>
+                <span className="text-sm text-muted-foreground">Average views per report</span>
                 <span className="text-lg font-semibold">
                   {stats && stats.totalReports > 0
                     ? Math.round(stats.totalViews / stats.totalReports)
@@ -115,7 +115,7 @@ export default function AdminStatistics() {
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">平均每个研报下载量</span>
+                <span className="text-sm text-muted-foreground">Average downloads per report</span>
                 <span className="text-lg font-semibold">
                   {stats && stats.totalReports > 0
                     ? Math.round(stats.totalDownloads / stats.totalReports)
@@ -123,7 +123,7 @@ export default function AdminStatistics() {
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">平均每个用户下载量</span>
+                <span className="text-sm text-muted-foreground">Average downloads per user</span>
                 <span className="text-lg font-semibold">
                   {stats && stats.totalUsers > 0
                     ? Math.round(stats.totalDownloads / stats.totalUsers)
@@ -136,14 +136,14 @@ export default function AdminStatistics() {
 
         <Card>
           <CardHeader>
-            <CardTitle>数据说明</CardTitle>
+            <CardTitle>Data Description</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-2 text-sm text-muted-foreground">
-              <p>• 研报总数：平台上传的所有研报数量</p>
-              <p>• 总下载量：所有研报的累计下载次数</p>
-              <p>• 用户总数：注册用户的总数量</p>
-              <p>• 总浏览量：所有研报的累计浏览次数</p>
+              <p>• Total Reports: Number of all reports uploaded to the platform</p>
+              <p>• Total Downloads: Cumulative download count of all reports</p>
+              <p>• Total Users: Total number of registered users</p>
+              <p>• Total Views: Cumulative view count of all reports</p>
             </div>
           </CardContent>
         </Card>

@@ -66,8 +66,8 @@ export default function AdminCategories() {
     try {
       await createCategory(formData);
       toast({
-        title: '创建成功',
-        description: '分类已创建',
+        title: 'CreateSuccessfully',
+        description: '分类已Create',
       });
       setDialogOpen(false);
       setFormData({ name: '', description: '' });
@@ -75,7 +75,7 @@ export default function AdminCategories() {
     } catch (error) {
       console.error('Failed to create category:', error);
       toast({
-        title: '创建失败',
+        title: 'CreateFailed',
         description: '请稍后重试',
         variant: 'destructive',
       });
@@ -88,8 +88,8 @@ export default function AdminCategories() {
     try {
       await updateCategory(editingCategory.id, formData);
       toast({
-        title: '更新成功',
-        description: '分类已更新',
+        title: 'UpdateSuccessfully',
+        description: '分类已Update',
       });
       setDialogOpen(false);
       setEditingCategory(null);
@@ -98,7 +98,7 @@ export default function AdminCategories() {
     } catch (error) {
       console.error('Failed to update category:', error);
       toast({
-        title: '更新失败',
+        title: 'UpdateFailed',
         description: '请稍后重试',
         variant: 'destructive',
       });
@@ -111,15 +111,15 @@ export default function AdminCategories() {
     try {
       await deleteCategory(deletingCategory.id);
       toast({
-        title: '删除成功',
-        description: '分类已删除',
+        title: 'DeleteSuccessfully',
+        description: '分类已Delete',
       });
       setDeletingCategory(null);
       fetchCategories();
     } catch (error) {
       console.error('Failed to delete category:', error);
       toast({
-        title: '删除失败',
+        title: 'DeleteFailed',
         description: '请稍后重试',
         variant: 'destructive',
       });
@@ -146,43 +146,43 @@ export default function AdminCategories() {
           <DialogTrigger asChild>
             <Button onClick={openCreateDialog}>
               <Plus className="mr-2 h-4 w-4" />
-              新增分类
+              Add分类
             </Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>{editingCategory ? '编辑分类' : '新增分类'}</DialogTitle>
+              <DialogTitle>{editingCategory ? 'Edit分类' : 'Add分类'}</DialogTitle>
               <DialogDescription>
-                {editingCategory ? '修改分类信息' : '创建一个新的分类'}
+                {editingCategory ? 'Modify category information' : 'Create一个新的分类'}
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-4 py-4">
               <div className="space-y-2">
-                <Label htmlFor="name">分类名称</Label>
+                <Label htmlFor="name">Category Name</Label>
                 <Input
                   id="name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="输入分类名称"
+                  placeholder="输入Category Name"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="description">描述</Label>
+                <Label htmlFor="description">Description</Label>
                 <Textarea
                   id="description"
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  placeholder="输入分类描述"
+                  placeholder="输入分类Description"
                   rows={3}
                 />
               </div>
             </div>
             <DialogFooter>
               <Button variant="outline" onClick={() => setDialogOpen(false)}>
-                取消
+                Cancel
               </Button>
               <Button onClick={editingCategory ? handleUpdate : handleCreate}>
-                {editingCategory ? '更新' : '创建'}
+                {editingCategory ? 'Update' : 'Create'}
               </Button>
             </DialogFooter>
           </DialogContent>
@@ -191,8 +191,8 @@ export default function AdminCategories() {
 
       <Card>
         <CardHeader>
-          <CardTitle>分类列表</CardTitle>
-          <CardDescription>管理研报分类</CardDescription>
+          <CardTitle>Categories List</CardTitle>
+          <CardDescription>Manage report categories</CardDescription>
         </CardHeader>
         <CardContent>
           {loading ? (
@@ -202,9 +202,9 @@ export default function AdminCategories() {
               <TableHeader>
                 <TableRow>
                   <TableHead>名称</TableHead>
-                  <TableHead>描述</TableHead>
-                  <TableHead>创建时间</TableHead>
-                  <TableHead className="text-right">操作</TableHead>
+                  <TableHead>Description</TableHead>
+                  <TableHead>Create时间</TableHead>
+                  <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -244,14 +244,14 @@ export default function AdminCategories() {
       <AlertDialog open={!!deletingCategory} onOpenChange={() => setDeletingCategory(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>确认删除</AlertDialogTitle>
+            <AlertDialogTitle>确认Delete</AlertDialogTitle>
             <AlertDialogDescription>
-              确定要删除分类 "{deletingCategory?.name}" 吗？此操作无法撤销。
+              确定要Delete分类 "{deletingCategory?.name}" 吗？This action cannot be undone。
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>取消</AlertDialogCancel>
-            <AlertDialogAction onClick={handleDelete}>删除</AlertDialogAction>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={handleDelete}>Delete</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

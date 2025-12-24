@@ -41,13 +41,13 @@ export default function AdminHomepage() {
         advantages: config.advantages,
       });
       toast({
-        title: '保存成功',
-        description: '首页配置已更新',
+        title: 'Saved Successfully',
+        description: 'Homepage configuration updated',
       });
     } catch (error) {
       console.error('Failed to save config:', error);
       toast({
-        title: '保存失败',
+        title: 'Save Failed',
         description: '请稍后重试',
         variant: 'destructive',
       });
@@ -57,61 +57,61 @@ export default function AdminHomepage() {
   };
 
   if (loading || !config) {
-    return <div>加载中...</div>;
+    return <div>Loading...</div>;
   }
 
   return (
     <div>
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold">首页管理</h1>
+        <h1 className="text-3xl font-bold">Homepage Management</h1>
         <Button onClick={handleSave} disabled={saving}>
           <Save className="mr-2 h-4 w-4" />
-          {saving ? '保存中...' : '保存更改'}
+          {saving ? 'Saving...' : 'Save Changes'}
         </Button>
       </div>
 
       <div className="space-y-6">
         <Card>
           <CardHeader>
-            <CardTitle>网站使命</CardTitle>
-            <CardDescription>首页展示的网站使命描述</CardDescription>
+            <CardTitle>Website Mission</CardTitle>
+            <CardDescription>首页展示的Website Mission描述</CardDescription>
           </CardHeader>
           <CardContent>
             <Textarea
               value={config.mission || ''}
               onChange={(e) => setConfig({ ...config, mission: e.target.value })}
               rows={3}
-              placeholder="输入网站使命..."
+              placeholder="输入Website Mission..."
             />
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle>平台特色</CardTitle>
-            <CardDescription>首页展示的平台特色（每行一个）</CardDescription>
+            <CardTitle>Platform Features</CardTitle>
+            <CardDescription>首页展示的Platform Features（每行一个）</CardDescription>
           </CardHeader>
           <CardContent>
             <Textarea
               value={config.features?.join('\n') || ''}
               onChange={(e) => setConfig({ ...config, features: e.target.value.split('\n').filter(Boolean) })}
               rows={5}
-              placeholder="权威来源&#10;实时更新&#10;专业分类&#10;便捷下载"
+              placeholder="权威来源&#10;实时Update&#10;专业分类&#10;便捷下载"
             />
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle>平台优势</CardTitle>
-            <CardDescription>首页展示的平台优势（每行一个）</CardDescription>
+            <CardTitle>Platform Advantages</CardTitle>
+            <CardDescription>首页展示的Platform Advantages（每行一个）</CardDescription>
           </CardHeader>
           <CardContent>
             <Textarea
               value={config.advantages?.join('\n') || ''}
               onChange={(e) => setConfig({ ...config, advantages: e.target.value.split('\n').filter(Boolean) })}
               rows={5}
-              placeholder="覆盖全行业&#10;数据准确&#10;更新及时&#10;免费访问"
+              placeholder="覆盖全行业&#10;数据准确&#10;Update及时&#10;免费访问"
             />
           </CardContent>
         </Card>

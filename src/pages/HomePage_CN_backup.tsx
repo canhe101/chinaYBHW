@@ -8,6 +8,7 @@ import { getHomepageConfig, getReports } from '@/db/api';
 import type { HomepageConfig, Report } from '@/types';
 import { FileText, TrendingUp, Clock, Download, ArrowRight } from 'lucide-react';
 import { format } from 'date-fns';
+import { zhCN } from 'date-fns/locale';
 
 export default function HomePage() {
   const [config, setConfig] = useState<HomepageConfig | null>(null);
@@ -36,24 +37,24 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 xl:py-32 bg-gradient-to-br from-primary/10 via-background to-secondary/10">
+      <section className="relative py-20 xl:py-32 bg-gradient-to-br from-primary/10 via-background to-accent/10">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h1 className="text-4xl xl:text-6xl font-bold tracking-tight">
-              <span className="gradient-text">China Smart Research Hub</span>
+              <span className="gradient-text">中国研报下载平台</span>
             </h1>
             <p className="text-lg xl:text-xl text-muted-foreground max-w-2xl mx-auto">
-              {config?.mission || 'Your Professional Research Partner - Access the latest industry research reports, market analyses, and comprehensive insights on China'}
+              {config?.mission || '为全球用户提供最新、最全面的中国研究报告和市场分析资料'}
             </p>
             <div className="flex flex-col xl:flex-row gap-4 justify-center pt-4">
               <Button size="lg" asChild>
                 <Link to="/reports">
-                  Browse Reports
+                  浏览研报
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link to="/login">Sign Up Now</Link>
+                <Link to="/login">立即注册</Link>
               </Button>
             </div>
           </div>
@@ -64,8 +65,8 @@ export default function HomePage() {
       <section className="py-16 xl:py-24 bg-muted/50">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl xl:text-4xl font-bold mb-4">Platform Features</h2>
-            <p className="text-muted-foreground">Professional, Authoritative, and Timely Research Services</p>
+            <h2 className="text-3xl xl:text-4xl font-bold mb-4">平台特色</h2>
+            <p className="text-muted-foreground">专业、权威、及时的研报服务</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
             {loading ? (
@@ -87,11 +88,11 @@ export default function HomePage() {
                     <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                       <FileText className="h-6 w-6 text-primary" />
                     </div>
-                    <CardTitle>Authoritative Sources</CardTitle>
+                    <CardTitle>权威来源</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground">
-                      Curated reports from leading domestic and international research institutions
+                      汇集国内外知名研究机构的权威报告
                     </p>
                   </CardContent>
                 </Card>
@@ -100,11 +101,11 @@ export default function HomePage() {
                     <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                       <Clock className="h-6 w-6 text-primary" />
                     </div>
-                    <CardTitle>Real-time Updates</CardTitle>
+                    <CardTitle>实时更新</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground">
-                      Daily updates with the latest reports to keep you informed of market dynamics
+                      每日更新最新研报，把握市场动态
                     </p>
                   </CardContent>
                 </Card>
@@ -113,11 +114,11 @@ export default function HomePage() {
                     <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                       <TrendingUp className="h-6 w-6 text-primary" />
                     </div>
-                    <CardTitle>Professional Categories</CardTitle>
+                    <CardTitle>专业分类</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground">
-                      Organized by industry and topic for quick access to what you need
+                      按行业、主题精细分类，快速找到所需
                     </p>
                   </CardContent>
                 </Card>
@@ -126,11 +127,11 @@ export default function HomePage() {
                     <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                       <Download className="h-6 w-6 text-primary" />
                     </div>
-                    <CardTitle>Easy Download</CardTitle>
+                    <CardTitle>便捷下载</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground">
-                      One-click download with online preview and offline reading support
+                      一键下载，支持在线预览和离线阅读
                     </p>
                   </CardContent>
                 </Card>
@@ -145,12 +146,12 @@ export default function HomePage() {
         <div className="container">
           <div className="flex items-center justify-between mb-12">
             <div>
-              <h2 className="text-3xl xl:text-4xl font-bold mb-4">Latest Reports</h2>
-              <p className="text-muted-foreground">Recently uploaded research reports</p>
+              <h2 className="text-3xl xl:text-4xl font-bold mb-4">最新发布</h2>
+              <p className="text-muted-foreground">最新上传的研究报告</p>
             </div>
             <Button variant="outline" asChild>
               <Link to="/reports">
-                View All
+                查看全部
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -181,14 +182,14 @@ export default function HomePage() {
                       )}
                     </div>
                     <CardDescription className="line-clamp-2">
-                      {report.description || 'No description available'}
+                      {report.description || '暂无描述'}
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
                       <span className="flex items-center gap-1">
                         <Clock className="h-3 w-3" />
-                        {format(new Date(report.created_at), 'MMM dd, yyyy')}
+                        {format(new Date(report.created_at), 'yyyy-MM-dd', { locale: zhCN })}
                       </span>
                       <span className="flex items-center gap-1">
                         <Download className="h-3 w-3" />
@@ -196,7 +197,7 @@ export default function HomePage() {
                       </span>
                     </div>
                     <Button className="w-full" asChild>
-                      <Link to={`/reports/${report.id}`}>View Details</Link>
+                      <Link to={`/reports/${report.id}`}>查看详情</Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -209,12 +210,12 @@ export default function HomePage() {
       {/* CTA Section */}
       <section className="py-16 xl:py-24 bg-primary text-primary-foreground">
         <div className="container text-center">
-          <h2 className="text-3xl xl:text-4xl font-bold mb-4">Start Exploring China's Market</h2>
+          <h2 className="text-3xl xl:text-4xl font-bold mb-4">开始探索中国市场</h2>
           <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-            Sign up now to access the latest Chinese economic reports and market analysis
+            立即注册，获取最新的中国经济报告和市场分析资料
           </p>
           <Button size="lg" variant="secondary" asChild>
-            <Link to="/login">Free Registration</Link>
+            <Link to="/login">免费注册</Link>
           </Button>
         </div>
       </section>

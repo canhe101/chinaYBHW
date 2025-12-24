@@ -96,8 +96,8 @@ export default function ReportsListPage() {
     <div className="min-h-screen py-8">
       <div className="container">
         <div className="mb-8">
-          <h1 className="text-3xl xl:text-4xl font-bold mb-4">研报列表</h1>
-          <p className="text-muted-foreground">浏览和搜索最新的研究报告</p>
+          <h1 className="text-3xl xl:text-4xl font-bold mb-4">Research Reports</h1>
+          <p className="text-muted-foreground">Browse and search the latest research reports</p>
         </div>
 
         {/* Filters */}
@@ -105,23 +105,23 @@ export default function ReportsListPage() {
           <div className="flex flex-col xl:flex-row gap-4">
             <div className="flex-1 flex gap-2">
               <Input
-                placeholder="搜索研报标题或描述..."
+                placeholder="Search report titles or descriptions..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
               />
               <Button onClick={handleSearch}>
                 <Search className="h-4 w-4 xl:mr-2" />
-                <span className="hidden xl:inline">搜索</span>
+                <span className="hidden xl:inline">Search</span>
               </Button>
             </div>
             <div className="flex gap-2">
               <Select value={categoryId || 'all'} onValueChange={handleCategoryChange}>
                 <SelectTrigger className="w-full xl:w-[180px]">
-                  <SelectValue placeholder="选择分类" />
+                  <SelectValue placeholder="Select Category" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">全部分类</SelectItem>
+                  <SelectItem value="all">All Categories</SelectItem>
                   {categories.map((cat) => (
                     <SelectItem key={cat.id} value={cat.id}>
                       {cat.name}
@@ -131,13 +131,13 @@ export default function ReportsListPage() {
               </Select>
               <Select value={sortBy} onValueChange={handleSortChange}>
                 <SelectTrigger className="w-full xl:w-[180px]">
-                  <SelectValue placeholder="排序方式" />
+                  <SelectValue placeholder="Sort By" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="created_at">最新发布</SelectItem>
-                  <SelectItem value="published_at">发布时间</SelectItem>
-                  <SelectItem value="view_count">浏览量</SelectItem>
-                  <SelectItem value="download_count">下载量</SelectItem>
+                  <SelectItem value="created_at">Latest</SelectItem>
+                  <SelectItem value="published_at">Published Date</SelectItem>
+                  <SelectItem value="view_count">Views</SelectItem>
+                  <SelectItem value="download_count">Downloads</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -147,7 +147,7 @@ export default function ReportsListPage() {
         {/* Results */}
         <div className="mb-8">
           <p className="text-sm text-muted-foreground">
-            共找到 {total} 个研报
+            Found {total} reports
           </p>
         </div>
 
@@ -167,7 +167,7 @@ export default function ReportsListPage() {
             ))
           ) : reports.length === 0 ? (
             <div className="col-span-full text-center py-12">
-              <p className="text-muted-foreground">暂无研报</p>
+              <p className="text-muted-foreground">No reports available</p>
             </div>
           ) : (
             reports.map((report) => (
@@ -182,7 +182,7 @@ export default function ReportsListPage() {
                     )}
                   </div>
                   <CardDescription className="line-clamp-3">
-                    {report.description || '暂无描述'}
+                    {report.description || 'No description available'}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -203,7 +203,7 @@ export default function ReportsListPage() {
                     </div>
                   </div>
                   <Button className="w-full" asChild>
-                    <Link to={`/reports/${report.id}`}>查看详情</Link>
+                    <Link to={`/reports/${report.id}`}>View Details</Link>
                   </Button>
                 </CardContent>
               </Card>

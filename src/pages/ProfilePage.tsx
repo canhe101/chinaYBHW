@@ -41,7 +41,7 @@ export default function ProfilePage() {
   return (
     <div className="min-h-screen py-8">
       <div className="container max-w-4xl">
-        <h1 className="text-3xl xl:text-4xl font-bold mb-8">个人中心</h1>
+        <h1 className="text-3xl xl:text-4xl font-bold mb-8">Profile</h1>
 
         <div className="grid gap-6">
           {/* Profile Info */}
@@ -49,7 +49,7 @@ export default function ProfilePage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <User className="h-5 w-5" />
-                个人信息
+                Personal Information
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -59,13 +59,13 @@ export default function ProfilePage() {
                   <p className="font-medium">{profile.username}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground mb-1">角色</p>
+                  <p className="text-sm text-muted-foreground mb-1">Role</p>
                   <Badge variant={profile.role === 'admin' ? 'default' : 'secondary'}>
-                    {profile.role === 'admin' ? '管理员' : '普通用户'}
+                    {profile.role === 'admin' ? 'Administrator' : 'User'}
                   </Badge>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground mb-1">注册时间</p>
+                  <p className="text-sm text-muted-foreground mb-1">Registration Date</p>
                   <p className="font-medium">
                     {format(new Date(profile.created_at), 'yyyy-MM-dd HH:mm', { locale: zhCN })}
                   </p>
@@ -79,9 +79,9 @@ export default function ProfilePage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Download className="h-5 w-5" />
-                下载记录
+                Download History
               </CardTitle>
-              <CardDescription>最近10条下载记录</CardDescription>
+              <CardDescription>最近10条Download History</CardDescription>
             </CardHeader>
             <CardContent>
               {loading ? (
@@ -92,9 +92,9 @@ export default function ProfilePage() {
                 </div>
               ) : downloadLogs.length === 0 ? (
                 <div className="text-center py-8 text-muted-foreground">
-                  <p>暂无下载记录</p>
+                  <p>暂无Download History</p>
                   <Button variant="link" asChild className="mt-2">
-                    <Link to="/reports">去浏览研报</Link>
+                    <Link to="/reports">Browse Reports</Link>
                   </Button>
                 </div>
               ) : (
@@ -106,7 +106,7 @@ export default function ProfilePage() {
                     >
                       <div className="flex-1">
                         <h4 className="font-medium mb-1">
-                          {log.report?.title || '未知研报'}
+                          {log.report?.title || 'Unknown Report'}
                         </h4>
                         <div className="flex items-center gap-4 text-sm text-muted-foreground">
                           <span className="flex items-center gap-1">
@@ -117,7 +117,7 @@ export default function ProfilePage() {
                       </div>
                       {log.report && (
                         <Button variant="outline" size="sm" asChild>
-                          <Link to={`/reports/${log.report_id}`}>查看</Link>
+                          <Link to={`/reports/${log.report_id}`}>View</Link>
                         </Button>
                       )}
                     </div>

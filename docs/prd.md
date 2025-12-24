@@ -1,41 +1,45 @@
-# 中国PDF研报下载网站需求文档
+# China Research PDF Download Website Requirements Document
 
-## 1. 网站名称
-ChinaResearchHub.com
+## 1. Website Name
+ChinaInsightsHub.com
 
-## 2. 网站描述
-面向全球用户的中国最新PDF研报下载平台，提供最新的中国经济报告、市场分析资料、行业研究报告等专业文档的在线浏览和下载服务。主要服务于全球范围内的投资者、分析师、研究人员、企业决策者等需要获取中国权威研报资料的用户群体。\n
-## 3. 网站功能\n
-### 3.1 前台功能
-\n#### 3.1.1 用户系统
-- 用户登录与注册
-- 个人信息管理
+## 2. Website Description
+A professional platform for global users to access and download the latest China PDF research reports, providing authoritative economic reports, market analysis materials, and industry research documents. The platform primarily serves investors, analysts, researchers, corporate decision-makers, and other professionals worldwide who need access to credible China research materials.
 
-#### 3.1.2 内容展示
-- 首页介绍：展示网站使命、服务特色、优势
-- 最新发布：按发布时间排序展示新上传的PDF研报
-- 分类列表：按行业、主题等分类展示
-- 详情页：展示PDF研报标题、描述、发布时间、来源信息
-- 下载功能：提供云存储链接下载，支持PDF在线预览
+## 3. Website Features
 
-### 3.2 后台管理功能
+### 3.1 Frontend Features
 
-#### 3.2.1 内容管理
-- 首页管理：首页内容编辑、轮播图配置
-- PDF管理：\n  - 新增PDF：手动添加PDF标题、描述、下载URL
-  - Excel导入：支持批量导入研报信息，包含标题、简介、下载链接、发布时间字段
-  - 编辑：修改PDF基本信息、分类、标签等
-  - 删除：支持单个删除和批量删除操作
-\n#### 3.2.2 数据管理
-- 用户管理：查看用户列表、权限管理、单个用户下载记录查看、时间范围内下载统计
-- 分类管理：新增、编辑、删除报告分类
-- 报告统计：PDF浏览量、下载量、用户登录次数等
+#### 3.1.1 User System\n- User login and registration
+- Personal profile management
 
-## 4. 设计风格\n
-### 4.1 配色方案
-主色调为深蓝色（#1E3A8A）搭配白色，体现专业性与可信度；辅助色为浅灰色（#F8FAFC）作为背景色，蓝色渐变（#3B82F6至#1D4ED8）用于按钮和关键标识\n
-### 4.2 视觉细节
-现代简约的Material Design风格，界面简洁有序；卡片布局展示报告信息，增强内容层次感；圆角弧度8px营造亲和感，阴影效果突出专业品质
+#### 3.1.2 Content Display\n- Homepage: Showcase website mission, service features, and advantages
+- Latest Releases: Display newly uploaded PDF reports sorted by publication date
+- Category Listings: Display reports organized by industry, topic, and other classifications
+- Detail Page: Display PDF report title, description, publication date, and source information
+- Download Function: Provide cloud storage download links with PDF online preview support
 
-### 4.3 整体布局
-响应式网格布局，适配桌面端和移动端访问；固定顶部导航栏设计便于快速导航；列表页采用表格形式便于信息对比和管理
+### 3.2 Backend Management Features
+\n#### 3.2.1 Content Management
+- Homepage Management: Edit homepage content and configure carousel banners
+- PDF Management:\n  - Add PDF: Manually add PDF title, description, and download URL
+  - Excel Import: Support batch import of report information including title, description, download link, and publication date fields
+  - Edit: Modify PDF basic information, categories, tags, etc.
+  - Delete: Support single and batch deletion operations
+
+#### 3.2.2 Data Management
+- User Management: View user list, permission management, individual user download history, and download statistics within specified time ranges
+- Category Management: Add, edit, and delete report categories
+- Report Statistics: Track PDF views, downloads, user login frequency, etc.
+
+## 4. Design Style
+
+### 4.1 Color Scheme
+Primary color is vibrant orange-red (#FF5722) paired with white, conveying energy and professionalism; secondary colors include warm coral (#FF7043) for accents and light cream (#FFF3E0) for background, creating a welcoming yet authoritative atmosphere suitable for American users. Use the color palette from the provided image (图片.png) as the main reference.
+
+### 4.2 Visual Details
+Modern clean design with card-based layouts for report display, enhancing content hierarchy; 8px rounded corners for a friendly feel; subtle shadow effects (02px 8px rgba(255,87,34,0.15)) to add depth and professionalism; sans-serif typography for clarity\n
+### 4.3 Overall Layout
+Responsive grid layout optimized for both desktop and mobile access; fixed top navigation bar for easy navigation; list pages use table format for efficient information comparison and management; generous white space to reduce visual clutter\n
+##5. Reference Images
+Use the uploaded image 图片.png as the primary color scheme reference for the website design.

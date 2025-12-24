@@ -22,66 +22,66 @@ interface RouteConfig {
 
 const routes: RouteConfig[] = [
   {
-    name: '首页',
+    name: 'Home',
     path: '/',
     element: <HomePage />
   },
   {
-    name: '登录',
+    name: 'Login',
     path: '/login',
     element: <LoginPage />,
     visible: false
   },
   {
-    name: '研报列表',
+    name: 'Research Reports',
     path: '/reports',
     element: <ReportsListPage />
   },
   {
-    name: '研报详情',
+    name: 'Report Details',
     path: '/reports/:id',
     element: <ReportDetailPage />,
     visible: false
   },
   {
-    name: '个人中心',
+    name: 'Profile',
     path: '/profile',
     element: <ProfilePage />,
     visible: false
   },
   {
-    name: '管理后台',
+    name: 'Admin Panel',
     path: '/admin',
     element: <AdminLayout />,
     visible: false,
     children: [
       {
-        name: '仪表盘',
+        name: 'Dashboard',
         path: '',
         element: <AdminDashboard />
       },
       {
-        name: '首页管理',
+        name: 'Home管理',
         path: 'homepage',
         element: <AdminHomepage />
       },
       {
-        name: '研报管理',
+        name: 'Reports Management',
         path: 'reports',
         element: <AdminReports />
       },
       {
-        name: '分类管理',
+        name: 'Categories Management',
         path: 'categories',
         element: <AdminCategories />
       },
       {
-        name: '用户管理',
+        name: 'Users Management',
         path: 'users',
         element: <AdminUsers />
       },
       {
-        name: '统计分析',
+        name: 'Statistics',
         path: 'statistics',
         element: <AdminStatistics />
       }

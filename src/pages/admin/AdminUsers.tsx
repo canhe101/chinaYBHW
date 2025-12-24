@@ -47,14 +47,14 @@ export default function AdminUsers() {
     try {
       await updateUserRole(userId, newRole);
       toast({
-        title: '更新成功',
-        description: '用户角色已更新',
+        title: 'UpdateSuccessfully',
+        description: '用户角色已Update',
       });
       fetchUsers();
     } catch (error) {
       console.error('Failed to update role:', error);
       toast({
-        title: '更新失败',
+        title: 'UpdateFailed',
         description: '请稍后重试',
         variant: 'destructive',
       });
@@ -69,8 +69,8 @@ export default function AdminUsers() {
 
       <Card>
         <CardHeader>
-          <CardTitle>用户列表</CardTitle>
-          <CardDescription>管理所有用户及其权限</CardDescription>
+          <CardTitle>Users List</CardTitle>
+          <CardDescription>Manage all users and their permissions</CardDescription>
         </CardHeader>
         <CardContent>
           {loading ? (
@@ -80,7 +80,7 @@ export default function AdminUsers() {
               <TableHeader>
                 <TableRow>
                   <TableHead>用户名</TableHead>
-                  <TableHead>邮箱</TableHead>
+                  <TableHead>Email</TableHead>
                   <TableHead>角色</TableHead>
                   <TableHead>注册时间</TableHead>
                   <TableHead className="text-right">操作</TableHead>

@@ -25,11 +25,11 @@ export default function LoginPage() {
     setIsLoading(true);
 
     try {
-      // 验证用户名格式
+      // 验证Username格式
       if (!/^[a-zA-Z0-9_]+$/.test(loginForm.username)) {
         toast({
-          title: '登录失败',
-          description: '用户名只能包含字母、数字和下划线',
+          title: 'Login失败',
+          description: 'Username只能包含字母、数字和下划线',
           variant: 'destructive',
         });
         return;
@@ -39,14 +39,14 @@ export default function LoginPage() {
 
       if (error) {
         toast({
-          title: '登录失败',
-          description: error.message || '用户名或密码错误',
+          title: 'Login失败',
+          description: error.message || 'Username或Password错误',
           variant: 'destructive',
         });
       } else {
         toast({
-          title: '登录成功',
-          description: '欢迎回来！',
+          title: 'Login成功',
+          description: 'Welcome back!',
         });
         navigate(from, { replace: true });
       }
@@ -60,11 +60,11 @@ export default function LoginPage() {
     setIsLoading(true);
 
     try {
-      // 验证用户名格式
+      // 验证Username格式
       if (!/^[a-zA-Z0-9_]+$/.test(registerForm.username)) {
         toast({
-          title: '注册失败',
-          description: '用户名只能包含字母、数字和下划线',
+          title: 'Sign Up失败',
+          description: 'Username只能包含字母、数字和下划线',
           variant: 'destructive',
         });
         return;
@@ -72,8 +72,8 @@ export default function LoginPage() {
 
       if (registerForm.password !== registerForm.confirmPassword) {
         toast({
-          title: '注册失败',
-          description: '两次输入的密码不一致',
+          title: 'Sign Up失败',
+          description: '两次输入的Password不一致',
           variant: 'destructive',
         });
         return;
@@ -81,8 +81,8 @@ export default function LoginPage() {
 
       if (registerForm.password.length < 6) {
         toast({
-          title: '注册失败',
-          description: '密码长度至少为6位',
+          title: 'Sign Up失败',
+          description: 'Password长度至少为6位',
           variant: 'destructive',
         });
         return;
@@ -92,14 +92,14 @@ export default function LoginPage() {
 
       if (error) {
         toast({
-          title: '注册失败',
-          description: error.message || '注册失败，请稍后重试',
+          title: 'Sign Up失败',
+          description: error.message || 'Sign Up失败，请稍后重试',
           variant: 'destructive',
         });
       } else {
         toast({
-          title: '注册成功',
-          description: '欢迎加入 ChinaResearchHub！',
+          title: 'Sign Up成功',
+          description: 'Welcome to China Insights!',
         });
         navigate(from, { replace: true });
       }
@@ -116,29 +116,29 @@ export default function LoginPage() {
             <FileText className="h-8 w-8 text-primary" />
             <span className="text-2xl font-bold gradient-text">ChinaResearchHub</span>
           </Link>
-          <p className="text-muted-foreground">中国研报下载平台</p>
+          <p className="text-muted-foreground">China Research Reports Platform</p>
         </div>
 
         <Tabs defaultValue="login" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="login">登录</TabsTrigger>
-            <TabsTrigger value="register">注册</TabsTrigger>
+            <TabsTrigger value="login">Login</TabsTrigger>
+            <TabsTrigger value="register">Sign Up</TabsTrigger>
           </TabsList>
 
           <TabsContent value="login">
             <Card>
               <CardHeader>
-                <CardTitle>登录账号</CardTitle>
-                <CardDescription>输入您的用户名和密码登录</CardDescription>
+                <CardTitle>Login to Account</CardTitle>
+                <CardDescription>Enter your username and password to login</CardDescription>
               </CardHeader>
               <form onSubmit={handleLogin}>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="login-username">用户名</Label>
+                    <Label htmlFor="login-username">Username</Label>
                     <Input
                       id="login-username"
                       type="text"
-                      placeholder="请输入用户名"
+                      placeholder="请输入Username"
                       value={loginForm.username}
                       onChange={(e) => setLoginForm({ ...loginForm, username: e.target.value })}
                       required
@@ -146,11 +146,11 @@ export default function LoginPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="login-password">密码</Label>
+                    <Label htmlFor="login-password">Password</Label>
                     <Input
                       id="login-password"
                       type="password"
-                      placeholder="请输入密码"
+                      placeholder="请输入Password"
                       value={loginForm.password}
                       onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
                       required
@@ -160,7 +160,7 @@ export default function LoginPage() {
                 </CardContent>
                 <CardFooter>
                   <Button type="submit" className="w-full" disabled={isLoading}>
-                    {isLoading ? '登录中...' : '登录'}
+                    {isLoading ? 'Logging in...' : 'Login'}
                   </Button>
                 </CardFooter>
               </form>
@@ -170,17 +170,17 @@ export default function LoginPage() {
           <TabsContent value="register">
             <Card>
               <CardHeader>
-                <CardTitle>注册账号</CardTitle>
-                <CardDescription>创建一个新账号开始使用</CardDescription>
+                <CardTitle>Create Account</CardTitle>
+                <CardDescription>Create a new account to get started</CardDescription>
               </CardHeader>
               <form onSubmit={handleRegister}>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="register-username">用户名</Label>
+                    <Label htmlFor="register-username">Username</Label>
                     <Input
                       id="register-username"
                       type="text"
-                      placeholder="字母、数字、下划线"
+                      placeholder="Letters, numbers, underscores"
                       value={registerForm.username}
                       onChange={(e) => setRegisterForm({ ...registerForm, username: e.target.value })}
                       required
@@ -188,11 +188,11 @@ export default function LoginPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="register-password">密码</Label>
+                    <Label htmlFor="register-password">Password</Label>
                     <Input
                       id="register-password"
                       type="password"
-                      placeholder="至少6位"
+                      placeholder="At least 6 characters"
                       value={registerForm.password}
                       onChange={(e) => setRegisterForm({ ...registerForm, password: e.target.value })}
                       required
@@ -200,11 +200,11 @@ export default function LoginPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="register-confirm">确认密码</Label>
+                    <Label htmlFor="register-confirm">确认Password</Label>
                     <Input
                       id="register-confirm"
                       type="password"
-                      placeholder="再次输入密码"
+                      placeholder="再次输入Password"
                       value={registerForm.confirmPassword}
                       onChange={(e) => setRegisterForm({ ...registerForm, confirmPassword: e.target.value })}
                       required
@@ -214,7 +214,7 @@ export default function LoginPage() {
                 </CardContent>
                 <CardFooter>
                   <Button type="submit" className="w-full" disabled={isLoading}>
-                    {isLoading ? '注册中...' : '注册'}
+                    {isLoading ? 'Signing up...' : 'Sign Up'}
                   </Button>
                 </CardFooter>
               </form>
@@ -224,7 +224,7 @@ export default function LoginPage() {
 
         <div className="mt-4 text-center text-sm text-muted-foreground">
           <Link to="/" className="hover:text-primary transition-colors">
-            返回首页
+            Back to Home
           </Link>
         </div>
       </div>

@@ -16,32 +16,32 @@ import { useState } from 'react';
 
 const sidebarItems = [
   {
-    title: '仪表盘',
+    title: 'Dashboard',
     href: '/admin',
     icon: LayoutDashboard,
   },
   {
-    title: '首页管理',
+    title: 'Homepage',
     href: '/admin/homepage',
     icon: Home,
   },
   {
-    title: '研报管理',
+    title: 'Reports',
     href: '/admin/reports',
     icon: FileText,
   },
   {
-    title: '分类管理',
+    title: 'Categories',
     href: '/admin/categories',
     icon: FolderTree,
   },
   {
-    title: '用户管理',
+    title: 'Users',
     href: '/admin/users',
     icon: Users,
   },
   {
-    title: '统计分析',
+    title: 'Statistics',
     href: '/admin/statistics',
     icon: BarChart3,
   },
@@ -55,7 +55,7 @@ function SidebarContent() {
       <div className="p-6">
         <Link to="/" className="flex items-center gap-2">
           <FileText className="h-6 w-6 text-primary" />
-          <span className="text-lg font-bold">管理后台</span>
+          <span className="text-lg font-bold">Admin Panel</span>
         </Link>
       </div>
       <ScrollArea className="flex-1 px-3">
@@ -84,7 +84,7 @@ function SidebarContent() {
       </ScrollArea>
       <div className="p-4 border-t">
         <Button variant="outline" className="w-full" asChild>
-          <Link to="/">返回前台</Link>
+          <Link to="/">Back to Site</Link>
         </Button>
       </div>
     </div>
